@@ -1,4 +1,4 @@
-package com.example.spring_mysql_api.wetherapplication.controller;
+package com.example.spring_mysql_api.weatherapplication.controller;
 
 import com.example.spring_mysql_api.model.WeatherInfo;
 import com.example.spring_mysql_api.service.WeatherService;
