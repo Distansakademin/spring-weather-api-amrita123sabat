@@ -1,5 +1,4 @@
 package com.example.spring_mysql_api.weatherapplication.controller;
-
 import com.example.spring_mysql_api.model.WeatherInfo;
 import com.example.spring_mysql_api.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,10 @@ public class WeatherController {
 
     @Autowired
     private WeatherService weatherService;
+    @GetMapping("/")
+    public ResponseEntity<String> welcome() {
+        return ResponseEntity.ok("Welcome to the Weather Application!");
+    }
 
     @GetMapping("/{country}/cities")
     public ResponseEntity<List<WeatherInfo>> getCitiesByCountry(@PathVariable String country) {
@@ -33,4 +36,5 @@ public class WeatherController {
             return ResponseEntity.notFound().build();
         }
     }
+
 }
