@@ -5,8 +5,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-
-// Import the WeatherService class
 import com.example.spring_mysql_api.service.WeatherService;
 
 @SpringBootApplication
@@ -26,6 +24,6 @@ public class WeatherApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        weatherService.addDataForSweden();
+        weatherService.addDataForCountry();
     }
 }

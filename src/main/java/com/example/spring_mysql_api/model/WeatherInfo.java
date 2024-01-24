@@ -1,5 +1,7 @@
 package com.example.spring_mysql_api.model;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +21,7 @@ public class WeatherInfo {
     private String temperature;
     private String weatherCondition;
 
-    // Constructors, getters, setters (Lombok can be used for brevity)
-
+    // Constructors (default and parameterized)
     public WeatherInfo() {
     }
 
@@ -31,25 +32,56 @@ public class WeatherInfo {
         this.weatherCondition = weatherCondition;
     }
 
-    // Getters and setters (Omitted for brevity)
-
+    // Getters and setters (Lombok can be used for brevity, but manually provided here)
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCity() {
         return city;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getCountry() {
         return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getTemperature() {
         return temperature;
     }
 
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
     public String getWeatherCondition() {
         return weatherCondition;
+    }
+
+    public void setWeatherCondition(String weatherCondition) {
+        this.weatherCondition = weatherCondition;
+    }
+
+    // toString method (you may customize it as needed)
+    @Override
+    public String toString() {
+        return "WeatherInfo{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", temperature='" + temperature + '\'' +
+                ", weatherCondition='" + weatherCondition + '\'' +
+                '}';
     }
 }

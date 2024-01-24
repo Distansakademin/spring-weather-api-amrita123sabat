@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/api")
@@ -16,25 +19,54 @@ public class WeatherController {
 
     @Autowired
     private WeatherService weatherService;
+    public void setWeatherService(WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
     @GetMapping("/")
     public ResponseEntity<String> welcome() {
         return ResponseEntity.ok("Welcome to the Weather Application!");
     }
 
-    @GetMapping("/{country}/cities")
-    public ResponseEntity<List<WeatherInfo>> getCitiesByCountry(@PathVariable String country) {
-        List<WeatherInfo> cities = weatherService.getCitiesByCountry(country);
-        return ResponseEntity.ok(cities);
-    }
 
+    @GetMapping("/weatherinformation")
+    public ResponseEntity<List<WeatherInfo>> getAllWeatherInformation() {
+        System.out.println("Debasis2");
+        List<WeatherInfo> allWeatherInformation = weatherService.getAllWeatherInformation();
+        return ResponseEntity.ok(allWeatherInformation);
+    }
+    @GetMapping("/cities-and-countries")
+    public ResponseEntity<List<Map<String, Object>>> getCitiesAndCountries() {
+        List<WeatherInfo> allWeatherInformation = weatherService.getAllWeatherInformation();
+
+        Map<String, List<String>> citiesByCountry = allWeatherInformation.stream()
+                .collect(Collectors.groupingBy(
+                        WeatherInfo::getCountry,
+                        Collectors.mapping(WeatherInfo::getCity, Collectors.toList())
+                ));
+
+        List<Map<String, Object>> result = new ArrayList<>();
+        citiesByCountry.forEach((country, cities) -> {
+            Map<String, Object> countryInfo = new HashMap<>();
+            countryInfo.put("country", country);
+            countryInfo.put("cities", cities);
+            result.add(countryInfo);
+        });
+
+        return ResponseEntity.ok(result);
+    }
     @GetMapping("/weather/{cityId}")
-    public ResponseEntity<WeatherInfo> getWeatherByCityId(@PathVariable Long cityId) {
-        WeatherInfo weatherInfo = weatherService.getWeatherByCityId(cityId);
-        if (weatherInfo != null) {
+    public ResponseEntity<Optional<WeatherInfo>> getWeatherByCityId(@PathVariable Long cityId) {
+        System.out.println("Debasis");
+
+        Optional<WeatherInfo> weatherInfo = weatherService.getWeatherByCityId(cityId);
+
+        if (weatherInfo.isPresent()) {
+            System.out.println("Debasis 6");
             return ResponseEntity.ok(weatherInfo);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+
 
 }
