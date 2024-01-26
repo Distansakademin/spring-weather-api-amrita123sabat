@@ -22,6 +22,7 @@ public class WeatherService {
     public WeatherService(WeatherInfoRepository weatherInfoRepository) {
         this.weatherInfoRepository = weatherInfoRepository;
     }
+
     public List<String> getAllCitiesAndCountries() {
         List<WeatherInfo> allCities = weatherInfoRepository.findAll();
 
@@ -33,6 +34,7 @@ public class WeatherService {
 
         return new ArrayList<>(citiesAndCountries);
     }
+
     public Optional<WeatherInfo> getWeatherByCityId(Long cityId) {
         System.out.println("Debasis4");
         return weatherInfoRepository.findById(cityId);
@@ -46,7 +48,6 @@ public class WeatherService {
         List<WeatherInfo> uniqueCities = new ArrayList<>();
 
         for (WeatherInfo city : allCities) {
-            // Check if the city has already been processed
             if (!processedCities.contains(city.getCity())) {
                 uniqueCities.add(city);
                 processedCities.add(city.getCity());
@@ -77,4 +78,6 @@ public class WeatherService {
         // Save all weather information
         weatherInfoRepository.saveAll(List.of(swedenCity1, swedenCity2, indiaCity1, indiaCity2, usaCity1, usaCity2, japanCity1, japanCity2));
     }
+
+
 }

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "weather_info")
@@ -26,6 +27,7 @@ public class WeatherInfo {
     }
 
     public WeatherInfo(String city, String country, String temperature, String weatherCondition) {
+
         this.city = city;
         this.country = country;
         this.temperature = temperature;
@@ -73,6 +75,7 @@ public class WeatherInfo {
         this.weatherCondition = weatherCondition;
     }
 
+
     // toString method (you may customize it as needed)
     @Override
     public String toString() {
@@ -84,4 +87,8 @@ public class WeatherInfo {
                 ", weatherCondition='" + weatherCondition + '\'' +
                 '}';
     }
+
+
+
+
 }

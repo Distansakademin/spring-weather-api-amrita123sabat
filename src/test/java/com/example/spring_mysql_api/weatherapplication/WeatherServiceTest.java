@@ -88,10 +88,13 @@ class WeatherServiceTest {
         // Arrange
         List<WeatherInfo> mockWeatherInfoList = Arrays.asList(
                 new WeatherInfo("Stockholm", "Sweden", "15.0", "Sunny"),
+                new WeatherInfo("Gothenburg", "Sweden", "14.5", "Cloudy"),
                 new WeatherInfo("Mumbai", "India", "30.0", "Hot"),
+                new WeatherInfo("Delhi", "India", "28.5", "Clear"),
                 new WeatherInfo("New York", "USA", "25.0", "Partly Cloudy"),
-                new WeatherInfo("Tokyo", "Japan", "20.0", "Rainy")
-                // Add more data as needed
+                new WeatherInfo("Los Angeles", "USA", "28.5", "Sunny"),
+                new WeatherInfo("Tokyo", "Japan", "20.0", "Rainy"),
+                new WeatherInfo("Osaka", "Japan", "22.5", "Cloudy")
         );
 
         when(weatherInfoRepository.findAll()).thenReturn(mockWeatherInfoList);
