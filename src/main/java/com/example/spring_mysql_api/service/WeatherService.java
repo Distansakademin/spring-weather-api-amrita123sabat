@@ -36,12 +36,10 @@ public class WeatherService {
     }
 
     public Optional<WeatherInfo> getWeatherByCityId(Long cityId) {
-        System.out.println("Debasis4");
         return weatherInfoRepository.findById(cityId);
     }
 
     public List<WeatherInfo> getAllWeatherInformation() {
-        System.out.println("Debasis");
         List<WeatherInfo> allCities = weatherInfoRepository.findAll();
 
         Set<String> processedCities = new HashSet<>();

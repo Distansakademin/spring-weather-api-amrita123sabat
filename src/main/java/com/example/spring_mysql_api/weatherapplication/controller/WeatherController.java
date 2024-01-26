@@ -30,7 +30,6 @@ public class WeatherController {
 
     @GetMapping("/weatherinformation")
     public ResponseEntity<List<WeatherInfo>> getAllWeatherInformation() {
-        System.out.println("Debasis2");
         List<WeatherInfo> allWeatherInformation = weatherService.getAllWeatherInformation();
         return ResponseEntity.ok(allWeatherInformation);
     }
@@ -56,12 +55,10 @@ public class WeatherController {
     }
     @GetMapping("/weather/{cityId}")
     public ResponseEntity<Optional<WeatherInfo>> getWeatherByCityId(@PathVariable Long cityId) {
-        System.out.println("Debasis");
 
         Optional<WeatherInfo> weatherInfo = weatherService.getWeatherByCityId(cityId);
 
         if (weatherInfo.isPresent()) {
-            System.out.println("Debasis 6");
             return ResponseEntity.ok(weatherInfo);
         } else {
             return ResponseEntity.notFound().build();

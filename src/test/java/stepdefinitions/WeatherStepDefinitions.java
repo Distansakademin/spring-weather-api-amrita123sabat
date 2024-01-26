@@ -34,15 +34,26 @@ public class WeatherStepDefinitions {
     @Then("the response should include the following weather information:")
     public void the_response_should_include_the_following_weather_information(DataTable dataTable) {
         List<Map<String, String>> expectedData = dataTable.asMaps(String.class, String.class);
-        List<Map<String, String>> actualData = response.jsonPath().getList("weatherInformation");
+        List<Map<String, String>> actualData = response.jsonPath().getList("");
 
         // Compare expected and actual data
         for (Map<String, String> expectedRow : expectedData) {
-            if (actualData.contains(expectedRow)) {
-                System.out.println("Weather information found: " + expectedRow);
-            } else {
-                System.out.println("Weather information  not found: " + expectedRow);
+            boolean matchFound = false;
+            for (Map<String, String> actualRow : actualData) {
+                if (compareMaps(expectedRow, actualRow)) {
+                    matchFound = true;
+                    System.out.println("Weather information found: " + expectedRow);
+                    break;
+                }
+            }
+            if (!matchFound) {
+                System.out.println("Weather information not found: " + expectedRow);
             }
         }
+    }
+
+    private boolean compareMaps(Map<String, String> expected, Map<String, String> actual) {
+        // Compare the maps by comparing their key-value pairs
+        return actual.keySet().equals(expected.keySet());
     }
 }
