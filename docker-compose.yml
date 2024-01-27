@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   mysql-db:
     image: mysql:8.0
@@ -20,4 +19,3 @@ services:
       SPRING_DATASOURCE_USERNAME: myuser
       SPRING_DATASOURCE_PASSWORD: mypassword
       command: "--server.servlet.context-path=/api"
-
