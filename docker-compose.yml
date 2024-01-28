@@ -18,4 +18,4 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/mydatabase
       SPRING_DATASOURCE_USERNAME: myuser
       SPRING_DATASOURCE_PASSWORD: mypassword
-      command: "--server.servlet.context-path=/api"
+
