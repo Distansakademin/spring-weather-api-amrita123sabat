@@ -1,4 +1,4 @@
-name: Java CI with JUnit
+name: Java CI with JUnit and BDD
 
 on:
   push:
@@ -36,3 +36,6 @@ jobs:
 
       - name: Run JUnit tests
         run: mvn test
+
+      - name: Run BDD tests
+        run: mvn verify -Pbdd
