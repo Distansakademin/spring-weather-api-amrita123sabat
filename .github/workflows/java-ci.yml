@@ -39,3 +39,9 @@ jobs:
 
       - name: Run BDD tests
         run: mvn verify -Pbdd
+
+      -  name: Build Docker image
+         run: docker build -t spring-weather-api-amrita123sabat-spring-app:latest .
+
+      - name: Push Docker image to registry
+        run: docker push spring-weather-api-amrita123sabat-spring-app:latest
