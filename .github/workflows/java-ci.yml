@@ -1,4 +1,4 @@
-name: Java CI with JUnit and BDD
+name: Java CI with JUnit and BDD and Docker
 
 on:
   push:
@@ -40,8 +40,11 @@ jobs:
       - name: Run BDD tests
         run: mvn verify -Pbdd
 
-      -  name: Build Docker image
-         run: docker build -t spring-weather-api-amrita123sabat-spring-app:latest .
-
-      - name: Push Docker image to registry
-        run: docker push spring-weather-api-amrita123sabat-spring-app:latest
+      - name: Build and push Docker image
+        env:
+          DOCKERHUB_USERNAME: amrita1125
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          echo "$DOCKERHUB_PASSWORD" | docker login -u $DOCKERHUB_USERNAME --password-stdin
+          docker build -t $DOCKERHUB_USERNAME/spring-weather-api-amrita123sabat-spring-app .
+          docker push $DOCKERHUB_USERNAME/spring-weather-api-amrita123sabat-spring-app
