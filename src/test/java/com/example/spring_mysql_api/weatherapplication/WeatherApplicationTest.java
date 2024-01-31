@@ -22,20 +22,19 @@ public class WeatherApplicationTest {
 
     @Test
     public void testRunMethod() {
-        // Mocking behavior of the WeatherService
+
         Mockito.doNothing().when(weatherService).addDataForCountry();
 
         try {
-            // Call the run method
+
             weatherApplication.run();
 
-            // Verify that addDataForCountry method was called
             Mockito.verify(weatherService, Mockito.times(1)).addDataForCountry();
 
-            // Print statement for debugging/logging
+
             System.out.println("Test executed successfully!");
         } catch (Exception e) {
-            // Handle the exception, print or log an error message if needed
+
             System.err.println("Exception caught in test: " + e.getMessage());
         }
     }

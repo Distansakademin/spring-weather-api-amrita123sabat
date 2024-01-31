@@ -36,7 +36,7 @@ public class WeatherStepDefinitions {
         List<Map<String, String>> expectedData = dataTable.asMaps(String.class, String.class);
         List<Map<String, String>> actualData = response.jsonPath().getList("");
 
-        // Compare expected and actual data
+
         for (Map<String, String> expectedRow : expectedData) {
             boolean matchFound = false;
             for (Map<String, String> actualRow : actualData) {
@@ -53,7 +53,7 @@ public class WeatherStepDefinitions {
     }
 
     private boolean compareMaps(Map<String, String> expected, Map<String, String> actual) {
-        // Compare the maps by comparing their key-value pairs
+
         return actual.keySet().equals(expected.keySet());
     }
 }

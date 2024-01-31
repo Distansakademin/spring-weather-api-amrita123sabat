@@ -22,7 +22,7 @@ public class WeatherInfo {
     private String temperature;
     private String weatherCondition;
 
-    // Constructors (default and parameterized)
+
     public WeatherInfo() {
     }
 
@@ -34,7 +34,7 @@ public class WeatherInfo {
         this.weatherCondition = weatherCondition;
     }
 
-    // Getters and setters (Lombok can be used for brevity, but manually provided here)
+
     public Long getId() {
         return id;
     }
@@ -76,7 +76,7 @@ public class WeatherInfo {
     }
 
 
-    // toString method (you may customize it as needed)
+
     @Override
     public String toString() {
         return "WeatherInfo{" +

@@ -13,7 +13,6 @@ import java.util.HashSet;
 public class WeatherService {
 
     public String getWelcomeMessage() {
-        // Your implementation to get the welcome message
         return "Welcome to the Weather Application!";
     }
 

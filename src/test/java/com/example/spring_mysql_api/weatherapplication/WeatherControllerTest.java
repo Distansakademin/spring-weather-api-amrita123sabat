@@ -26,18 +26,17 @@ public class WeatherControllerTest {
     private WeatherController weatherController;
     @Test
     public void testWelcome() {
-        // When
+
         ResponseEntity<String> response = weatherController.welcome();
 
-        // Then
+
         assertEquals("Welcome to the Weather Application!", response.getBody());
 
-        // Print statements for debugging
         System.out.println("Welcome Endpoint Response: " + response);
     }
     @Test
     public void testGetAllWeatherInformation() {
-        // Given
+
         WeatherInfo city1 = new WeatherInfo("Stockholm", "Sweden", "15.0", "Sunny");
         WeatherInfo city2 = new WeatherInfo("Gothenburg", "Sweden", "14.5", "Cloudy");
         WeatherInfo city3 = new WeatherInfo("Mumbai", "India", "30.0", "Hot");
@@ -51,13 +50,13 @@ public class WeatherControllerTest {
 
         when(weatherService.getAllWeatherInformation()).thenReturn(mockWeatherInfoList);
 
-        // When
+
         ResponseEntity<List<WeatherInfo>> response = weatherController.getAllWeatherInformation();
 
-        // Then
+
         assertEquals(mockWeatherInfoList, response.getBody());
 
-        // Print statements for debugging
+
         System.out.println("GetAllWeatherInformation Endpoint Response: " + response);
 
         if (response.getBody() != null) {
@@ -69,7 +68,7 @@ public class WeatherControllerTest {
     }
     @Test
     public void testGetWeatherByCityId() {
-        // Given
+
         WeatherInfo city1 = new WeatherInfo("Stockholm", "Sweden", "15.0", "Sunny");
         WeatherInfo city2 = new WeatherInfo("Gothenburg", "Sweden", "14.5", "Cloudy");
         WeatherInfo city3 = new WeatherInfo("Mumbai", "India", "30.0", "Hot");
@@ -83,13 +82,13 @@ public class WeatherControllerTest {
 
         when(weatherService.getWeatherByCityId(1L)).thenReturn(mockWeatherInfo);
 
-        // When
+
         ResponseEntity<Optional<WeatherInfo>> response = weatherController.getWeatherByCityId(1L);
 
-        // Then
+
         assertEquals(mockWeatherInfo, response.getBody());
 
-        // Print statements for debugging
+
         System.out.println("GetWeatherByCityId Endpoint Response: " + response);
 
         if (response.getBody().isPresent()) {
@@ -101,7 +100,7 @@ public class WeatherControllerTest {
     }
     @Test
     public void testGetCitiesAndCountries() {
-        // Given
+
         List<WeatherInfo> weatherInfoList = Arrays.asList(
                 new WeatherInfo("Stockholm", "Sweden", "15.0", "Sunny"),
                 new WeatherInfo("Gothenburg", "Sweden", "14.5", "Cloudy"),
@@ -115,10 +114,10 @@ public class WeatherControllerTest {
 
         when(weatherService.getAllWeatherInformation()).thenReturn(weatherInfoList);
 
-        // When
+
         ResponseEntity<List<Map<String, Object>>> response = weatherController.getCitiesAndCountries();
 
-        // Then
+
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
@@ -126,19 +125,19 @@ public class WeatherControllerTest {
         assertNotNull(responseBody);
         assertEquals(4, responseBody.size()); // Assuming four countries in the provided data
 
-        // Verify that the service method was called once
+
         verify(weatherService, times(1)).getAllWeatherInformation();
 
-        // Assertions based on the provided cities
+
         assertCountry(responseBody, "Sweden", "Stockholm", "Gothenburg");
         assertCountry(responseBody, "India", "Mumbai", "Delhi");
         assertCountry(responseBody, "USA", "New York", "Los Angeles");
         assertCountry(responseBody, "Japan", "Tokyo", "Osaka");
 
-        // Print the response for debugging
+
         System.out.println("Cities and Countries Endpoint Response: " + response);
 
-        // Print additional information for debugging
+
         System.out.println("Print Cities and Countries Details:");
         responseBody.forEach(country -> {
             System.out.println("Country: " + country.get("country"));
