@@ -3,10 +3,7 @@ import com.example.spring_mysql_api.model.WeatherInfo;
 import com.example.spring_mysql_api.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 import java.util.List;
@@ -65,6 +62,16 @@ public class WeatherController {
         }
     }
 
+    @PostMapping("/weather")
+    public ResponseEntity<String> addWeatherInfo(@RequestBody WeatherInfo weatherInfo) {
+        weatherService.saveWeatherInfo(weatherInfo);
+        return ResponseEntity.ok("Weather information added successfully!");
+    }
 
+    @PutMapping("/weather/{cityId}")
+    public ResponseEntity<String> updateWeatherInfo(@PathVariable Long cityId, @RequestBody WeatherInfo updatedWeatherInfo) {
+        weatherService.updateWeatherInfo(cityId, updatedWeatherInfo);
+        return ResponseEntity.ok("Weather information updated successfully!");
+    }
 
 }

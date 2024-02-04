@@ -54,6 +54,23 @@ public class WeatherService {
         return uniqueCities;
     }
 
+    @Transactional
+    public void saveWeatherInfo(WeatherInfo weatherInfo) {
+        weatherInfoRepository.save(weatherInfo);
+    }
+
+    @Transactional
+    public void updateWeatherInfo(Long cityId, WeatherInfo updatedWeatherInfo) {
+        Optional<WeatherInfo> existingWeatherInfoOptional = weatherInfoRepository.findById(cityId);
+
+        existingWeatherInfoOptional.ifPresent(existingWeatherInfo -> {
+            existingWeatherInfo.setCity(updatedWeatherInfo.getCity());
+            existingWeatherInfo.setCountry(updatedWeatherInfo.getCountry());
+            existingWeatherInfo.setTemperature(updatedWeatherInfo.getTemperature());
+            existingWeatherInfo.setWeatherCondition(updatedWeatherInfo.getWeatherCondition());
+            weatherInfoRepository.save(existingWeatherInfo);
+        });
+    }
 
     @Transactional
     public void addDataForCountry() {
