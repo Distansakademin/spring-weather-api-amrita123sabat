@@ -7,6 +7,8 @@ services:
       MYSQL_DATABASE: mydatabase
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypassword
+    volumes:
+      - mysql-data:/var/lib/mysql   # Volume Mounting for MySQL data
 
   spring-app:
     build:
@@ -20,3 +22,6 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/mydatabase
       SPRING_DATASOURCE_USERNAME: myuser
       SPRING_DATASOURCE_PASSWORD: mypassword
+
+volumes:
+  mysql-data:   # Define a named volume for MySQL data storage
