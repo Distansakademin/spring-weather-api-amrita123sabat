@@ -73,5 +73,10 @@ public class WeatherController {
         weatherService.updateWeatherInfo(cityId, updatedWeatherInfo);
         return ResponseEntity.ok("Weather information updated successfully!");
     }
+    @DeleteMapping("/weather/{cityId}")
+    public ResponseEntity<String> deleteWeatherInfo(@PathVariable Long cityId) {
+        weatherService.deleteWeatherInfo(cityId);
+        return ResponseEntity.ok("Weather information deleted successfully!");
+    }
 
 }

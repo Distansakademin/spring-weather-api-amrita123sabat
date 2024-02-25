@@ -92,6 +92,10 @@ public class WeatherService {
         // Save all weather information
         weatherInfoRepository.saveAll(List.of(swedenCity1, swedenCity2, indiaCity1, indiaCity2, usaCity1, usaCity2, japanCity1, japanCity2));
     }
+    @Transactional
+    public void deleteWeatherInfo(Long cityId) {
+        weatherInfoRepository.deleteById(cityId);
+    }
 
 
 }
