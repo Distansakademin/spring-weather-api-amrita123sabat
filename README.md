@@ -87,11 +87,11 @@ Run the Application:
 
 Access the API:
 
-1. Package model: WeatherInfo
-2. Package Controller:WeatherController
+1. Package model: WeatherInfo class
+2. Package Controller:WeatherController class
 3. Package Repository:WeatherInfoRepository
-4. Package Service:WeatherService
-5. package weatherapplication:WeatherApplication
+4. Package Service:WeatherService class
+5. package weatherapplication:WeatherApplication class
 
 
 - Weather Information:
