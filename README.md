@@ -12,38 +12,38 @@ without compatibility problems.
 The goal of this project is to develop a comprehensive Spring Boot application with 
 the following objectives:
 
-## 1. Manage Countries and Cities
+ 1. Manage Countries and Cities
 
 Enable users to perform CRUD (Create, Read, Update, Delete) operations on 
 weather information about countries and cities. 
 
-## 2. Weather Information Integration
+2. Weather Information Integration
 
 Integrate weather information for cities into the application. This involves 
 fetching and displaying weather data for various cities, providing users with 
 real-time weather updates.
 
 
-## 3. Continuous Integration
+ 3. Continuous Integration
 
 Utilize GitHub Actions to implement continuous integration (CI) practices. 
 Automate the process of running tests to ensure code quality and reliability. 
 This involves automatically triggering test suites whenever code changes are pushed 
 to the repository.
 
-## 4. Docker Containerization
+4. Docker Containerization
 
 Containerize the application using Docker. This enables consistent deployment 
 across different environments and simplifies the setup process by encapsulating the 
 application and its dependencies into lightweight containers.
 
-## f. UML Diagram
+5. UML Diagram
 
 UML (Unified Modeling Language) diagram to model the application
 This diagram provide a visual representation of the application's structure and 
 relationships between its components. I have chosen to make a class diagram in Draw.io . 
 
-## 6. BDD (Behavior-Driven Development) and TDD (Test-Driven Development)
+6. BDD (Behavior-Driven Development) and TDD (Test-Driven Development)
 
 BDD techniques to define user stories and scenarios, ensuring that the
 application meets user requirements and behaves as expected. 
@@ -51,7 +51,7 @@ By achieving these goals, the project aims to deliver a robust, user-friendly,
 and well-tested Spring Boot application that effectively manages countries, cities, 
 and weather information.
 
-## 7. Unit Testing( Using Junit and Mockito)
+7. Unit Testing( Using Junit and Mockito)
 
 comprehensive unit tests using JUnit to validate individual components of the 
 application. These tests verify the functionality of methods and classes in isolation,
