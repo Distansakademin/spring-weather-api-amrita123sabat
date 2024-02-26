@@ -37,10 +37,10 @@ Containerize the application using Docker. This enables consistent deployment
 across different environments and simplifies the setup process by encapsulating the 
 application and its dependencies into lightweight containers.
 
-## f. UML Diagrams
+## f. UML Diagram
 
   UML (Unified Modeling Language) diagram to model the application
-These diagrams provide a visual representation of the application's structure and 
+This diagram provide a visual representation of the application's structure and 
 relationships between its components.
 
 ## 6. BDD (Behavior-Driven Development) and TDD (Test-Driven Development)
@@ -84,7 +84,15 @@ features are developed incrementally and in a testable manner.
 Run the Application:
 ./mvnw spring-boot:run
 
+
 Access the API:
+
+1. Package model: WeatherInfo
+2. Package Controller:WeatherController
+3. Package Repository:WeatherInfoRepository
+4. Package Service:WeatherService
+5. package weatherapplication:WeatherApplication
+
 
 - Weather Information:
   http://localhost:8080/api/weatherinformation
