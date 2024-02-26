@@ -39,9 +39,9 @@ application and its dependencies into lightweight containers.
 
 ## f. UML Diagram
 
-  UML (Unified Modeling Language) diagram to model the application
+UML (Unified Modeling Language) diagram to model the application
 This diagram provide a visual representation of the application's structure and 
-relationships between its components.
+relationships between its components. I have chosen to make a class diagram in Draw.io . 
 
 ## 6. BDD (Behavior-Driven Development) and TDD (Test-Driven Development)
 
